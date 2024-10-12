@@ -23,8 +23,8 @@ public:
         // randomizing between 1 and 20
         age = (rand() % 20) + 1;
         // randomizing an index to choose a random array element
-        name = names[rand() % 16];
-        color = colors[rand() % 16];
+        name = names[rand() % 15];
+        color = colors[rand() % 15];
 
     }
     // parameter constructor
@@ -110,35 +110,39 @@ public:
         temp->next = newNode;
     }
 
-    // void delete_node(Goat g) {
-    //     if (!head) return; // Empty list
+    void delete_node(Goat g) {
+        if (!head) return; // Empty list
 
-    //     Node* temp = head;
-    //     while (temp && temp->data != g)
-    //         temp = temp->next;
+        Node* temp = head;
+        // not using delete but comparing the ages of the goats as an int
+        while (temp && temp->data.getAge() != (g.getAge()))
+            temp = temp->next;
 
-    //     if (!temp) return; // Value not found
+        if (!temp) return; // Value not found
 
-    //     if (temp->prev) {
-    //         temp->prev->next = temp->next;
-    //     } else {
-    //         head = temp->next; // Deleting the head
-    //     }
+        if (temp->prev) {
+            temp->prev->next = temp->next;
+        } else {
+            head = temp->next; // Deleting the head
+        }
 
-    //     if (temp->next) {
-    //         temp->next->prev = temp->prev;
-    //     } else {
-    //         tail = temp->prev; // Deleting the tail
-    //     }
+        if (temp->next) {
+            temp->next->prev = temp->prev;
+        } else {
+            tail = temp->prev; // Deleting the tail
+        }
 
-    //     delete temp;
-    // }
+        delete temp;
+    }
 
     void print() {
         Node* current = head;
-        if (!current) return;
+        if (!current) {
+            cout << "List is empty" << endl;
+            return;}
         cout << "Forward: " << endl;
         while (current) {
+            // use getters to print 
             cout << "   " << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")" << endl; 
             current = current->next;
         }
@@ -147,9 +151,13 @@ public:
 
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+        if (!current){
+            cout << "List is empty" << endl;
+            return;
+        }
         cout << "Backward: " << endl;
         while (current) {
+            // using getters to print
             cout << "   " << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")" << endl;
             current = current->prev;
         }
@@ -183,6 +191,7 @@ int main() {
     list.~DoublyLinkedList();
     cout << "List forward: ";
     list.print();
+    list.print_reverse();
 
     return 0;
 }
