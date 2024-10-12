@@ -17,6 +17,15 @@ private:
         "Purple", "Pink", "Brown", "Black", "White",
         "Gray", "Cyan", "Magenta", "Teal", "Gold"};
 
+public:
+    // default constructor
+    Goat () {
+        // randomizing between 1 and 20
+        age = (rand() % 20) + 1;
+
+    }
+    // parameter constructor
+    Goat (int a, string n, string c) {age = a; name = n, color = c;}
     
 };
 
