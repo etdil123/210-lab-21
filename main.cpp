@@ -181,17 +181,15 @@ int main() {
 
     for (int i = 0; i < size; ++i)
         list.push_back(Goat());
-    cout << "List forward: ";
     list.print();
 
-    cout << "List backward: ";
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
     cout << "List forward: ";
     list.print();
-    list.print_reverse();
+  
 
     return 0;
 }
