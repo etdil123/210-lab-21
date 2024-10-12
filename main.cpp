@@ -1,9 +1,10 @@
+// Ethan Dilk | COMSC 210 | Lab 21 Goat Herd Manager 3000
 #include <iostream>
 #include <string>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
-
+// creating Goat class
 class Goat {
 private:
     int age;
@@ -190,6 +191,5 @@ int main() {
     cout << "List forward: ";
     list.print();
   
-
     return 0;
 }
