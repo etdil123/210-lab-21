@@ -29,6 +29,11 @@ public:
     }
     // parameter constructor
     Goat (int a, string n, string c) {age = a; name = n, color = c;}
+
+    // getters
+    int getAge() {return age;}
+    string getName() {return name;}
+    string getColor() {return color;}
     
 };
 
@@ -105,36 +110,36 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(Goat g) {
-        if (!head) return; // Empty list
+    // void delete_node(Goat g) {
+    //     if (!head) return; // Empty list
 
-        Node* temp = head;
-        while (temp && temp->data != g)
-            temp = temp->next;
+    //     Node* temp = head;
+    //     while (temp && temp->data != g)
+    //         temp = temp->next;
 
-        if (!temp) return; // Value not found
+    //     if (!temp) return; // Value not found
 
-        if (temp->prev) {
-            temp->prev->next = temp->next;
-        } else {
-            head = temp->next; // Deleting the head
-        }
+    //     if (temp->prev) {
+    //         temp->prev->next = temp->next;
+    //     } else {
+    //         head = temp->next; // Deleting the head
+    //     }
 
-        if (temp->next) {
-            temp->next->prev = temp->prev;
-        } else {
-            tail = temp->prev; // Deleting the tail
-        }
+    //     if (temp->next) {
+    //         temp->next->prev = temp->prev;
+    //     } else {
+    //         tail = temp->prev; // Deleting the tail
+    //     }
 
-        delete temp;
-    }
+    //     delete temp;
+    // }
 
     void print() {
         Node* current = head;
         if (!current) return;
         cout << "Forward: " << endl;
         while (current) {
-            cout << "   " << current->
+            cout << "   " << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")" << endl; 
             current = current->next;
         }
         cout << endl;
@@ -143,8 +148,9 @@ public:
     void print_reverse() {
         Node* current = tail;
         if (!current) return;
+        cout << "Backward: " << endl;
         while (current) {
-            cout << current->data << " ";
+            cout << "   " << current->data.getName() << " (" << current->data.getColor() << ", " << current->data.getAge() << ")" << endl;
             current = current->prev;
         }
         cout << endl;
